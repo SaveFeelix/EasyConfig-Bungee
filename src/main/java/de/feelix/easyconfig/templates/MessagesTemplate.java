@@ -47,7 +47,7 @@ public abstract class MessagesTemplate extends PluginConfig {
      */
     public MessagesTemplate(@NotNull Plugin plugin, @NotNull String folderName, @Nullable String prefixVariable) {
         super(plugin, folderName, "messages");
-        this.prefixVariable = Objects.requireNonNull(prefixVariable, "%prefix%");
+        this.prefixVariable = prefixVariable != null ? prefixVariable : "%prefix%";
     }
 
     @Override
