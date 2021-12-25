@@ -26,19 +26,8 @@ public abstract class MessagesTemplate extends PluginConfig {
     /**
      * Constructor of MessagesTemplate
      *
-     * @param plugin     reference to the Plugin
-     * @param folderName the folderName
-     */
-    public MessagesTemplate(@NotNull Plugin plugin, @NotNull String folderName) {
-        this(plugin, folderName);
-    }
-
-    /**
-     * Constructor of MessagesTemplate
-     *
      * @param plugin         reference to the Plugin
      * @param folderName     the folderName
-     * @param prefixVariable the prefixVariable
      */
     public MessagesTemplate(@NotNull Plugin plugin, @NotNull String folderName) {
         super(plugin, folderName, "messages");
