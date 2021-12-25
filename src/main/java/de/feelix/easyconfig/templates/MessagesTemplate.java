@@ -35,7 +35,7 @@ public abstract class MessagesTemplate extends PluginConfig {
      * @param plugin reference to the Plugin
      * @param folderName the folderName
      */
-    public MessagesTemplate(@NotNull JavaPlugin plugin, @NotNull String folderName) {
+    public MessagesTemplate(@NotNull Plugin plugin, @NotNull String folderName) {
         this(plugin, folderName, null);
     }
 
@@ -89,7 +89,7 @@ public abstract class MessagesTemplate extends PluginConfig {
      * @return the LoadMessage as a String
      */
     public String getLoadString() {
-        return TextUtils.checkOther(this.getFromConfig("load"), "%prefix%", this.getPrefix()).asString();
+        return TextUtils.checkOther(this.getFromConfig("load"), prefixVariable, this.getPrefix()).asString();
     }
 
     /**
@@ -107,7 +107,7 @@ public abstract class MessagesTemplate extends PluginConfig {
      * @return the EnableMessage as a String
      */
     public String getEnableString() {
-        return TextUtils.checkOther(this.getFromConfig("enable"), "%prefix%", this.getPrefix()).asString();
+        return TextUtils.checkOther(this.getFromConfig("enable"), prefixVariable, this.getPrefix()).asString();
     }
 
     /**
@@ -125,6 +125,6 @@ public abstract class MessagesTemplate extends PluginConfig {
      * @return the DisableMessage as a String
      */
     public String getDisableString() {
-        return TextUtils.checkOther(this.getFromConfig("disable"), "%prefix%", this.getPrefix()).asString();
+        return TextUtils.checkOther(this.getFromConfig("disable"), prefixVariable, this.getPrefix()).asString();
     }
 }
