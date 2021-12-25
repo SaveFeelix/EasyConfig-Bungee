@@ -53,7 +53,7 @@ public abstract class MessagesTemplate extends PluginConfig {
 
     @Override
     public void addDefault() {
-        this.add("prefix", plugin.getDescription().getName() + " §7>>");
+        this.add("prefix", "§aPlugin §7>>");
         this.add("load", "%prefix% §6Plugin load§7...");
         this.add("enable", "%prefix% §aPlugin enabled");
         this.add("disable", "%prefix% §cPlugin disabled");
