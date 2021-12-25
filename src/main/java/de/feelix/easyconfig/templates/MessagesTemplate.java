@@ -14,13 +14,29 @@ import java.util.Objects;
  */
 public abstract class MessagesTemplate extends PluginConfig {
 
+    
+    /**
+     * Reference to the Prefix
+     */
+    protected final String prefixVariable;
+    
     /**
      * Constructor of MessagesTemplate
      *
      * @param plugin reference to the Plugin
      */
     public MessagesTemplate(@NotNull Plugin plugin) {
-        this(plugin, "");
+        this(plugin, "", null);
+    }
+    
+    
+    /**
+     * Constructor of MessagesTemplate
+     * @param plugin reference to the Plugin
+     * @param folderName the folderName
+     */
+    public MessagesTemplate(@NotNull JavaPlugin plugin, @NotNull String folderName) {
+        this(plugin, folderName, null);
     }
 
     /**
@@ -29,8 +45,10 @@ public abstract class MessagesTemplate extends PluginConfig {
      * @param plugin         reference to the Plugin
      * @param folderName     the folderName
      */
-    public MessagesTemplate(@NotNull Plugin plugin, @NotNull String folderName) {
+    public MessagesTemplate(@NotNull Plugin plugin, @NotNull String folderName, @Nullable String prefixVariable) {
         super(plugin, folderName, "messages");
+        this.prefixVariable = prefixVariable != null ? prefixVariable : "%prefix%";
+        addOtherMessages();
     }
 
     @Override
@@ -39,7 +57,6 @@ public abstract class MessagesTemplate extends PluginConfig {
         this.add("load", "%prefix% §6Plugin load§7...");
         this.add("enable", "%prefix% §aPlugin enabled");
         this.add("disable", "%prefix% §cPlugin disabled");
-        addOtherMessages();
     }
 
     /**
@@ -63,7 +80,7 @@ public abstract class MessagesTemplate extends PluginConfig {
      * @return the LoadMessage as a Component
      */
     public TextComponent getLoadComponent() {
-        return TextUtils.checkOther(this.getFromConfig("load"), "%prefix%", this.getPrefix()).asComponent();
+        return TextUtils.checkOther(this.getFromConfig("load"), prefixVariable, this.getPrefix()).asComponent();
     }
 
     /**
@@ -81,7 +98,7 @@ public abstract class MessagesTemplate extends PluginConfig {
      * @return the EnableMessage as a Component
      */
     public TextComponent getEnableComponent() {
-        return TextUtils.checkOther(this.getFromConfig("enable"), "%prefix%", this.getPrefix()).asComponent();
+        return TextUtils.checkOther(this.getFromConfig("enable"), prefixVariable, this.getPrefix()).asComponent();
     }
 
     /**
@@ -99,7 +116,7 @@ public abstract class MessagesTemplate extends PluginConfig {
      * @return the DisableMessage as a Component
      */
     public TextComponent getDisableComponent() {
-        return TextUtils.checkOther(this.getFromConfig("disable"), "%prefix%", this.getPrefix()).asComponent();
+        return TextUtils.checkOther(this.getFromConfig("disable"), prefixVariable, this.getPrefix()).asComponent();
     }
 
     /**
