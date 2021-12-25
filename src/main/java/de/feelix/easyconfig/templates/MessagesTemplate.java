@@ -20,7 +20,7 @@ public abstract class MessagesTemplate extends PluginConfig {
      * @param plugin reference to the Plugin
      */
     public MessagesTemplate(@NotNull Plugin plugin) {
-        this(plugin, "", null);
+        this(plugin, "");
     }
 
     /**
@@ -30,7 +30,7 @@ public abstract class MessagesTemplate extends PluginConfig {
      * @param folderName the folderName
      */
     public MessagesTemplate(@NotNull Plugin plugin, @NotNull String folderName) {
-        this(plugin, folderName, null);
+        this(plugin, folderName);
     }
 
     /**
